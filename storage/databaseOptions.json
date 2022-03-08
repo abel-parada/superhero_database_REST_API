@@ -1,0 +1,7 @@
+{
+    "host":"localhost",
+    "port":3306,
+    "user":"emma",
+    "userpassword":"5KL1sYM1",
+    "database": "superherodb"
+}
