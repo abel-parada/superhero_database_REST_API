@@ -2,9 +2,7 @@
 
 const Database = require('../database')
 
-const database = require('mime-db');
 let createStatementFile = require('./createStatemens.json');
-const { table } = require('console');
 
 //helper functions for later
 const printMessage = message => console.log(message);
@@ -25,16 +23,16 @@ catch(error){
 }
 
 async function createDb(createStatements){
-//    console.log(JSON.stringify(createStatements,null,2))
+//    console.log(JSON.stringify(createStatements,null,2)) //helps me to visualize what's coming in
     
-    const options = {
+    const options = { 
         host:createStatements.host,
         port:createStatements.port,
         user:createStatements.admin,
         password:createStatements.adminpassword
     };
 
-    const DEBUG = createStatements.debug; // why?
+    const DEBUG = createStatements.debug;
     const db = new Database(options);
 
     //for simplicity I allocate the 'user'@'localhost' to a constant

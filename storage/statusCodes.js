@@ -72,4 +72,4 @@ const MESSAGES = {
     })
 };
 
-module.exports = {MESSAGES,CODES,TYPES};
+module.exports = {MESSAGES,CODES};
