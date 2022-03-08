@@ -4,14 +4,12 @@ const mariadb = require('mariadb');
 
 module.exports = class Database{
     constructor(options){
-        this.options = options;
-        this.options.allowPublicKeyRetrieval=true; // for mysql users
+        this.options=options;
+        this.options.allowPublicKeyRetrieval=true;
     }
 
-    //now I create the method to do queries
-
     doQuery(sql,parameters){
-        return new Promise (async (resolve,reject) => {
+        return new Promise( async (resolve,reject)=>{
             let connection;
             try{
                 connection = await mariadb.createConnection(this.options);
@@ -19,27 +17,29 @@ module.exports = class Database{
                 if(typeof queryResult === 'undefined'){
                     reject('QueryError');
                 }
-                else if (typeof queryResult.affectedRows === 'undefined'){
+                else if(typeof queryResult.affectedRows === 'undefined'){
                     delete queryResult.meta;
-                    resolve({queryResult,resulSet:true})
+                    // resolve({ "queryResult":queryResult, resultSet: true });
+                    resolve({queryResult, resultSet:true});
                 }
                 else {
                     resolve({
                         queryResult:{
-                            rowsChanged:queryResult.affectedRows,
+                            rowsChanged: queryResult.affectedRows,
                             insertId: queryResult.insertId,
                             status: queryResult.warningStatus
                         },
-                        resulSet: false
+                        resultSet:false
                     });
                 }
             }
-            catch(error){
-                reject('SQL-error'+error);
+            catch(err){
+                reject('SQL-error'+err);
             }
             finally{
-                if(connection) connection.end()
+                if(connection) connection.end();
             }
+
         });
-    };
-};
+    }
+}

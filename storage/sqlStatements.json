@@ -1,6 +1,6 @@
 {
-    "getAll": ["select heroID, name, strength, superproperty, yearOfBirth"],
-    "get": ["select heroID, name, strength, superproperty, yearOfBirth","where heroID=?"],
+    "getAll": ["select heroID, name, strength, superproperty, yearOfBirth from superhero"],
+    "get": ["select heroID, name, strength, superproperty, yearOfBirth from superhero","where heroID=?"],
     "insert":[
         "insert into superhero (heroID, name, strength, superproperty, yearOfBirth)","values(?,?,?,?,?)"
     ],
