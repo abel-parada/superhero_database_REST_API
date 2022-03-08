@@ -1,0 +1,15 @@
+{
+    "getAll": ["select heroID, name, strength, superproperty, yearOfBirth"],
+    "get": ["select heroID, name, strength, superproperty, yearOfBirth","where heroID=?"],
+    "insert":[
+        "insert into superhero (heroID, name, strength, superproperty, yearOfBirth)","values(?,?,?,?,?)"
+    ],
+    "update":[
+        "update superhero set name=?, strength=?, superproperty=?, yearOfBirth=?","where heroID=?"
+    ],
+    "remove":[
+        "delete from superhero where heroID=?"
+    ],
+    "primaryKey":"heroID"
+    
+}

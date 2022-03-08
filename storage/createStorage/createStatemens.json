@@ -1,0 +1,27 @@
+{
+    "host": "localhost",
+    "port":3306,
+    "admin":"parada",
+    "adminpassword":"secret",
+    "user":"emma",
+    "userpassword":"5KL1sYM1",
+    "dropuser":true,
+    "debug":true,
+    "database":"superherodb",
+    "tables":[
+        {
+            "tableName":"superhero",
+            "columns":[
+                "heroID integer not null primary key",
+                "name varchar(14) not null",
+                "strength varchar(7)",
+                "superproperty varchar(24)",
+                "yearOfBirth integer"
+            ],
+            "data":[
+                [1,"Batman","normal","money",1940],
+                [2,"SpiderMan","high","being awesome",1940]
+            ]
+        }
+    ]
+}
