@@ -27,6 +27,25 @@ app.get('/getAll', (req,res) =>{
 })
 
 
+app.post ('/add', (req,res) =>{
+    const superhero = req.body;
+
+    const options = {
+        method: 'POST',
+        mode: 'cors',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(superhero)
+    }
+
+    fetch('http://localhost:4000/api/superheros', options)
+        .then(data => data.json())
+        .then(result => res.json(result))
+        .catch(error => res.json(error))
+})
+
+
 // app.all('*',(req,res) =>res.json('not suported'))
 
 server.listen(port,host,() => console.log(`Server ${host}:${port} listening, up and running`));

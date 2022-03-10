@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/SPA/public/styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
     <script src="/js/helperfunctions.js"></script>
     <script src="/js/addHandler.js"></script>
     <title>Add Superhero</title>
@@ -12,9 +12,24 @@
         <h1>🦸‍♂️ Add your FAVOURITE superhero 🦸‍♂️</h1>
         <div class="fields">
             <div>
-                <label for=""></label>
+                <label>Hero ID<input type="text" id="heroid"></label>
+            </div>
+            <div>
+                <label>Name<input type="text" id="name"></label>
+            </div>
+            <div>
+                <label>Strength<input type="text" id="strength"></label>
+            </div>
+            <div>
+                <label>Superproperty<input type="text" id="superproperty"></label>
+            </div>
+            <div>
+                <label>Year of birth<input type="text" id="yearOfBirth"></label>
             </div>
         </div>
+        <button id="submit">ADD TO DATABSE</button>
+        <div id="messagearea"></div>
+        <a href="/"><button>TO MAIN MENU</button></a>
     </main>
 </body>
 </html>
