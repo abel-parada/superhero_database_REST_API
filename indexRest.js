@@ -25,32 +25,32 @@ app.use(express.json());
 app.get('/api/superheros', (req,res)=>
     storage.getAll()
         .then(result=>res.json(result))
-        .catch(err=>res.json(err))
+        .catch(error=>res.json(error))
 );
 
-app.get('/api/superheros/:id', (req,res)=>
-    storage.get(req.params.id)
+app.get('/api/superheros/:heroID', (req,res)=>
+    storage.get(req.params.heroID)
         .then(result=>res.json(result))
-        .catch(err=>res.json(err))
+        .catch(error=>res.json(error))
 );
 
-app.delete('/api/superheros/:id', (req, res) =>
-    storage.remove(req.params.id)
+app.delete('/api/superheros/:heroID', (req, res) =>
+    storage.remove(req.params.heroID)
         .then(result => res.json(result))
-        .catch(err => res.json(err))
+        .catch(error => res.json(error))
 );
 
 app.post('/api/superheros', (req,res)=>{
     const superhero=req.body;
     storage.insert(superhero)
         .then(status=>res.json(status))
-        .catch(err=>res.json(err));
+        .catch(error=>res.json(error));
 });
 
-app.put('/api/superheros/:id', (req,res)=>{
+app.put('/api/superheros/:heroID', (req,res)=>{
     const superhero= req.body;
-    const id = req.params.id;
-    storage.update(id, superhero)
+    const heroID = req.params.heroID;
+    storage.update(heroID, superhero)
         .then(status=>res.json(status))
         .catch(err=>res.json(err));
 });

@@ -20,12 +20,25 @@ app.get('/', (req,res) => res.sendFile(path.join(__dirname,'menu.html')));
 
 //allSuperheros.httml
 app.get('/getAll', (req,res) =>{
-    fetch('http://localhost:4000/api/superheros',{mode:'cors'})
+    fetch('http://localhost:4000/api/superheros',{mode:'cors'})//GET is default method
         .then(data => data.json())
         .then(result => res.json(result))
         .catch(error => res.json(error));
 })
 
+app.post('/getOne', (res,req) => {
+    let heroID = req.body.heroID;
+
+    if(heroID && heroID.length>0){
+        fetch(`http://localhost:4000/api/superheros/${heroID}`,{mode:'cors'})//GET is default method
+            .then(data => data.json())
+            .then(result => res.json(result))
+            .catch(error = res.json(error))
+    }
+    else{
+        res.json({message:'empty id',type:'error'})
+    }
+})
 
 app.post ('/add', (req,res) =>{
     const superhero = req.body;
@@ -45,7 +58,19 @@ app.post ('/add', (req,res) =>{
         .catch(error => res.json(error))
 })
 
+app.post('/remove', (res,req) => {
+    let heroID = req.body.heroID;
 
+    if(heroID && heroID.length>0){
+        fetch(`http://localhost:4000/api/superheros/${heroID}`,{method:'DELETE',mode:'cors'})//GET is default method
+            .then(data => data.json())
+            .then(result => res.json(result))
+            .catch(error = res.json(error))
+    }
+    else{
+        res.json({message:'empty id',type:'error'})
+    }
+})
 // app.all('*',(req,res) =>res.json('not suported'))
 
 server.listen(port,host,() => console.log(`Server ${host}:${port} listening, up and running`));
