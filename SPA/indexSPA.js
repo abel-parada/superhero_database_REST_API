@@ -26,20 +26,23 @@ app.get('/getAll', (req,res) =>{
         .catch(error => res.json(error));
 })
 
-app.post('/getOne', (res,req) => {
-    let heroID = req.body.heroID;
+//oneSuperhero.html
+app.post('/getOne', (req,res) => {
+    // console.log('This is the text:', req.body);
+    const heroID = req.body.heroID;
 
     if(heroID && heroID.length>0){
         fetch(`http://localhost:4000/api/superheros/${heroID}`,{mode:'cors'})//GET is default method
             .then(data => data.json())
             .then(result => res.json(result))
-            .catch(error = res.json(error))
+            .catch(error => res.json(error))
     }
     else{
         res.json({message:'empty id',type:'error'})
     }
 })
 
+//addSuperhero.html
 app.post ('/add', (req,res) =>{
     const superhero = req.body;
 
@@ -58,14 +61,15 @@ app.post ('/add', (req,res) =>{
         .catch(error => res.json(error))
 })
 
-app.post('/remove', (res,req) => {
-    let heroID = req.body.heroID;
+//removeSuperhero.html
+app.post('/remove', (req,res) => {
+    const heroID = req.body.heroID;
 
     if(heroID && heroID.length>0){
         fetch(`http://localhost:4000/api/superheros/${heroID}`,{method:'DELETE',mode:'cors'})//GET is default method
             .then(data => data.json())
             .then(result => res.json(result))
-            .catch(error = res.json(error))
+            .catch(error => res.json(error))
     }
     else{
         res.json({message:'empty id',type:'error'})

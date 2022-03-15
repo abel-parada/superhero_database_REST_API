@@ -28,10 +28,12 @@ app.get('/api/superheros', (req,res)=>
         .catch(error=>res.json(error))
 );
 
-app.get('/api/superheros/:heroID', (req,res)=>
+app.get('/api/superheros/:heroID', (req,res)=> {
+    console.log(req.params);
     storage.get(req.params.heroID)
         .then(result=>res.json(result))
         .catch(error=>res.json(error))
+    }   
 );
 
 app.delete('/api/superheros/:heroID', (req, res) =>
