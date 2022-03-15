@@ -35,9 +35,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ![alt text](/Images/main.png) "Main menu options"
 
-![alt text](/Images/storage.png) "Existing library at the time"
+![alt text](/Images/storage.png) "Database example"
 
-![alt text](/Images/restApi.png) "Error example"
+![alt text](/Images/restApi.png) "REST API"
 
 ## Sources
 
